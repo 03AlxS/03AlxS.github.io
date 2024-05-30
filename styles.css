@@ -1,87 +1,167 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1f1f1f; /* Color de fondo oscuro */
-    color: #ddd; /* Color de texto claro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #141414; /* Color de fondo más oscuro */
+  color: #EDEDED;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1;
 }
 
 h1 {
-    text-align: center;
-    color: #ddd; /* Color de texto claro */
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #EDEDED;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
 }
 
 .chat-container {
-    flex: 1;
-    overflow-y: auto;
-    background-color: #333; /* Color de fondo oscuro */
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Sombra con color invertido */
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #1E1E1E; /* Contenedor de chat más oscuro */
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  flex: 1;
+  overflow: hidden;
 }
 
 .chat-history {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .chat-message {
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    word-wrap: break-word;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  word-wrap: break-word;
 }
 
 .user-message {
-    background-color: #004d40; /* Color de fondo oscuro */
-    align-self: flex-end;
+  background-color: #2A2A2A; /* Color más claro para mensajes del usuario */
+  color: #EDEDED;
+  align-self: flex-end;
 }
 
 .bot-message {
-    background-color: #424242; /* Color de fondo oscuro */
-    align-self: flex-start;
+  background-color: #383838; /* Color ligeramente diferente para mensajes del bot */
+  color: #EDEDED;
+  align-self: flex-start;
 }
 
 .input-container {
-    display: flex;
-    margin-top: 20px;
+  display: flex;
+  margin-top: 10px;
 }
 
 #inputPrompt {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-    background-color: #333; /* Color de fondo oscuro */
-    color: #ddd; /* Color de texto claro */
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #3C3C6E;
+  border-radius: 5px;
+  resize: none;
+  background-color: #2D2D2F; /* Fondo más oscuro para el área de entrada */
+  color: #EDEDED;
 }
 
 #sendButton {
-    margin-left: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #009688; /* Color de botón oscuro */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #FF4F5A; /* Color del botón de enviar */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* Estilos adicionales para el botón al pasar el mouse */
-#sendButton:hover {
-    background-color: #00796b; /* Color de botón oscuro al pasar el mouse */
+#sendButton.loading {
+  background-color: #FF2D3E;
+  cursor: not-allowed;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#sendButton.loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-top: 2px solid #FF2D3E;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+.about-container {
+  margin-top: 20px;
+  background-color: #1E1E1E; /* Contenedor "Acerca de" más oscuro */
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #EDEDED;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    height: 30px;
+    margin-right: 5px;
+  }
+
+  .chat-container {
+    padding: 10px;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  #inputPrompt {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #sendButton {
+    font-size: 14px;
+    padding: 8px;
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }
