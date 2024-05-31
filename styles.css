@@ -1,12 +1,12 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #141414; /* Color de fondo más oscuro */
-  color: #EDEDED;
+  background-color: #181818; /* Fondo principal oscuro */
+  color: #e6e6e6; /* Texto claro */
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
@@ -23,25 +23,29 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #EDEDED;
+  color: #e6e6e6; /* Texto claro */
   margin-bottom: 20px;
-  font-size: 28px;
+  font-size: 32px; /* Aumentado el tamaño */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al texto */
 }
 
 .logo {
-  height: 40px;
+  height: 100px; /* Aumentado el tamaño */
   margin-right: 10px;
+  border-radius: 10px; /* Borde redondeado */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al logo */
 }
 
 .chat-container {
   display: flex;
   flex-direction: column;
-  background-color: #1E1E1E; /* Contenedor de chat más oscuro */
+  background-color: #252525; /* Fondo del contenedor del chat */
   border-radius: 10px;
   padding: 20px;
   box-sizing: border-box;
   flex: 1;
   overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al contenedor */
 }
 
 .chat-history {
@@ -60,19 +64,22 @@ h1 {
 }
 
 .user-message {
-  background-color: #2A2A2A; /* Color más claro para mensajes del usuario */
-  color: #EDEDED;
+  background-color: #2196F3; /* Azul */
+  color: #ffffff;
   align-self: flex-end;
+  margin-bottom: 5px;
 }
 
 .bot-message {
-  background-color: #383838; /* Color ligeramente diferente para mensajes del bot */
-  color: #EDEDED;
+  background-color: #9C27B0; /* Morado */
+  color: #ffffff;
   align-self: flex-start;
+  margin-bottom: 5px;
 }
 
 .input-container {
   display: flex;
+  align-items: center;
   margin-top: 10px;
 }
 
@@ -80,88 +87,100 @@ h1 {
   flex: 1;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #3C3C6E;
+  border: 1px solid #585858;
   border-radius: 5px;
   resize: none;
-  background-color: #2D2D2F; /* Fondo más oscuro para el área de entrada */
-  color: #EDEDED;
+  background-color: #303030; /* Color de fondo del área de entrada */
+  color: #e6e6e6;
+  margin-right: 10px;
+  height: 50px;
 }
 
-#sendButton {
-  margin-left: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #FF4F5A; /* Color del botón de enviar */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#sendButton.loading {
-  background-color: #FF2D3E;
+#inputPrompt:disabled {
+  background-color: #404040;
+  color: #888888;
   cursor: not-allowed;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+#sendButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50; /* Verde */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.3s ease;
 }
 
-#sendButton.loading::after {
-  content: '';
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 2px solid white;
-  border-top: 2px solid #FF2D3E;
+#sendButton:hover {
+  background-color: #388E3C; /* Verde oscuro al pasar el mouse */
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+}
+
+.button-text {
+  margin-right: 10px;
+}
+
+.loader {
+  border: 4px solid #ffffff;
+  border-top: 4px solid transparent;
   border-radius: 50%;
+  width: 20px;
+  height: 20px;
   animation: spin 1s linear infinite;
-  margin-left: 10px;
+  display: none;
+}
+
+#sendButton.loading .loader {
+  display: block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#resetButton {
+  display: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #F44336; /* Rojo */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+  transition: background-color 0.3s ease;
+}
+
+#resetButton:hover {
+  background-color: #C62828; /* Rojo oscuro al pasar el mouse */
 }
 
 .about-container {
-  margin-top: 20px;
-  background-color: #1E1E1E; /* Contenedor "Acerca de" más oscuro */
+  background-color: #252525;
   border-radius: 10px;
   padding: 20px;
-  box-sizing: border-box;
-  color: #EDEDED;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Media Queries for Mobile Devices */
-@media (max-width: 600px) {
-  .container {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .logo {
-    height: 30px;
-    margin-right: 5px;
-  }
-
-  .chat-container {
-    padding: 10px;
-  }
-
-  .input-container {
-    flex-direction: column;
-  }
-
-  #inputPrompt {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  #sendButton {
-    font-size: 14px;
-    padding: 8px;
-    margin-left: 0;
-    margin-top: 10px;
-  }
+.credits {
+  text-align: center;
+  margin-top: 20px;
+  color: #707070;
 }

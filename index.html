@@ -1,30 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Economia-GPT</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rel="icon" type="image/png" href="https://th.bing.com/th/id/OIP.FSnSH-zdsLJrWyrCwKw1ywHaHa?rs=1&pid=ImgDetMain">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1.0">
-</head>
-<body>
-  <div class="container">
-    <h1><img class="logo" src="https://st3.depositphotos.com/2509405/17721/v/600/depositphotos_177213940-stock-illustration-engraving-antique-illustration-of-axolotl.jpg" alt="Logo"> Economia-GPT</h1>
-    <div class="chat-container">
-      <div class="chat-history" id="chatHistory">
-        <div class="chat-message bot-message">
-          <strong>Economia-GPT:</strong> Hola, ¿en qué puedo ayudarte?
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Economia-GPT</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://th.bing.com/th/id/OIP.FSnSH-zdsLJrWyrCwKw1ywHaHa?rs=1&pid=ImgDetMain"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        <img
+          class="logo"
+          src="https://st3.depositphotos.com/2509405/17721/v/600/depositphotos_177213940-stock-illustration-engraving-antique-illustration-of-axolotl.jpg"
+          alt="Logo"
+        />
+        Economia-GPT
+      </h1>
+      <div class="chat-container">
+        <div id="chatHistory" class="chat-history"></div>
+        <div class="input-container">
+          <textarea
+            id="inputPrompt"
+            rows="3"
+            placeholder="Escribe tu mensaje aquí..."
+          ></textarea>
+          <button id="sendButton">
+            <div class="button-content">
+              <span class="button-text">Enviar</span>
+              <span class="loader"></span>
+            </div>
+          </button>
+          <button id="resetButton">Reiniciar</button>
         </div>
       </div>
-      <div class="input-container">
-        <textarea id="inputPrompt" placeholder="Ingresa tu mensaje"></textarea>
-        <button id="sendButton">Enviar</button>
+      <div class="about-container">
+        <h2>Acerca de</h2>
+        <p>
+          Bienvenido a Economia-GPT, tu asistente virtual para todas tus
+          preguntas económicas. Estamos aquí para ayudarte a entender y analizar
+          temas económicos con facilidad y precisión. Si tienes alguna pregunta
+          o necesitas asistencia, no dudes en preguntar.
+        </p>
+      </div>
+      <!-- Créditos -->
+      <div class="credits">
+        <p>Desarrollado por Rivera Merlin Alexis</p>
       </div>
     </div>
-    <div class="about-container">
-      <h2>Acerca de</h2>
-      <p>Bienvenido a Economia-GPT, tu asistente virtual para todas tus preguntas económicas. Estamos aquí para ayudarte a entender y analizar temas económicos con facilidad y precisión. Si tienes alguna pregunta o necesitas asistencia, no dudes en preguntar.</p>
-    </div>
-  </div>
-  <script src="app.js"></script>
-</body>
+    <script type="module" src="app.js"></script>
+  </body>
 </html>
